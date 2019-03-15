@@ -7,8 +7,8 @@ This Github Action does a fixed list of actions:
 1. (optional) filter the branch for action
 2. login to your Docker Registry
 3. build your docker image
-4. tag the image with `latest`, `sha` of the commit, `ref` of the commit, or with your own tag
-5. push the image to your registry
+4. tag the image with `latest`, `sha` of the commit, `ref` of the commit, or your own tag
+5. push all tags of the image to your registry
 
 Such that you don't have to run 5 different actions, which require the same environment setup (basically Docker) to be repeated again and again.
 
@@ -32,7 +32,7 @@ Below are the optional Secrets / Env:
 
 Below are some additional optional env:
 
-- `DOCKER_TAG_FULL_REF` - if this value is set, the `ref` tag of the image will contain the type of ref (git tag or git branch)
+- `DOCKER_TAG_APPEND` - if this value is set, the default `ref` tag will be appended with this value (e.g. `DOCKER_TAG_APPEND=asia-business` for a git master branch push will produce this docker image tag: `master_asia-business`)
 
 
 ## Example

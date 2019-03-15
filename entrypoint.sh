@@ -16,14 +16,9 @@ then
 fi
 
 GIT_TAG=${ref_value//\//-} ## replace `/` with `-` in ref for docker tag requirement (master or 2019-03-13)
-if [ -n "${DOCKER_TAG_FULL_REF+set}" ] ## if user specifically ask for differentiating tag & branch update
+if [ -n "${DOCKER_TAG_APPEND+set}" ] ## right append to tag if specified
 then
-  if [ "$ref_type" = "tags" ]
-  then
-    GIT_TAG=tag_$GIT_TAG
-  else
-    GIT_TAG=branch_$GIT_TAG
-  fi
+    GIT_TAG=${GIT_TAG}_${DOCKER_TAG_APPEND}
 fi
 
 REGISTRY=${DOCKER_REGISTRY_URL} ## use default Docker Hub as registry unless specified

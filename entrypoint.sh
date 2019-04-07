@@ -36,7 +36,7 @@ fi
 sh -c "docker build -t $IMAGE_NAME ${*:-.}" ## pass in the build command from user input, otherwise build in default mode
 
 ## tag the image with registry and versions
-if [ -n "${REGISTRY+set}" ]
+if [ -n "${REGISTRY}" ]
 then
   REGISTRY_IMAGE="$REGISTRY/$NAMESPACE/$IMAGE_NAME"
 else
